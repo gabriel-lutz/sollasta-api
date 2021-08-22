@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, OneToOne, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, OneToOne, JoinColumn } from "typeorm";
 import Category from "./Category";
 import Image from "./Image"
 import Specification from "./Specification";
@@ -29,7 +29,7 @@ export default class Product {
   @OneToMany(()=>Image, image => image.product)
   images: Image[]
 
-  @OneToOne(()=>Specification, specification => specification.productId)
-  @JoinTable()
+  @OneToOne(()=>Specification, specification => specification.product)
+  @JoinColumn()
   specification: Specification;
 }

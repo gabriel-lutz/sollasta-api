@@ -1,12 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
+import Product from "./Product";
 
 @Entity("specifications")
 export default class Specification {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    productId: number;
+    @OneToOne(()=>Product, product=>product.specification)
+    product: Product;
 
     @Column()
     color: string;
