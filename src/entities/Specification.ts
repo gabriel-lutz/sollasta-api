@@ -12,6 +12,9 @@ export default class Specification {
     color: string;
 
     @Column()
+    width: number;
+
+    @Column()
     height: number;
     
     @Column()
